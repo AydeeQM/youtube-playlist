@@ -1,5 +1,20 @@
 "use strict";
-
+$('.carousel .vertical .item').each(function(){
+    var next = $(this).next();
+    if (!next.length) {
+      next = $(this).siblings(':first');
+    }
+    next.children(':first-child').clone().appendTo($(this));
+    
+    for (var i=1;i<2;i++) {
+      next=next.next();
+      if (!next.length) {
+          next = $(this).siblings(':first');
+        }
+      
+      next.children(':first-child').clone().appendTo($(this));
+    }
+  });
 const API_KEY = "AIzaSyB6RQPxv-X6aojxx9IKh0Nc4twyqlMnitI";
 
 let app = {
@@ -10,7 +25,7 @@ let app = {
     },
 
     init: function () {
-        //app.videoSearch("iPhone");
+        app.youtubeSearch('iPhone X');
         app.setup();
     },
 
@@ -22,16 +37,17 @@ let app = {
         return videos.map((video, index) => {
             const titleUrl = video.snippet.title;
             const url = `https://www.youtube.com/embed/${video.id.videoId}`;
-            return `<li> 
+            return `<div class='item'> 
                      <p class="media-object">${titleUrl}</p>
-                     <p> 
+                     <div"> 
                         <iframe class="embed-responsive-item" src=${url}> </iframe>
-                     </p>
-               </li>`;
+                     </div>
+                    </div>`;
         });
     },
 
     youtubeSearch: function (searchTerm) {
+        $("#root").empty();
         searchTerm = $('#term-vimeo').val();
         console.log(searchTerm);
         YTSearch({ key: API_KEY, term: searchTerm }, data => {
@@ -43,6 +59,7 @@ let app = {
             };
             var list = app.getVideoList(app.result.videos);
             console.log("lis: ", list);
+            $("#mirror").append(list);
             $("#root").append(list);
         });
     },
