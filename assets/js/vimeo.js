@@ -1,20 +1,17 @@
 "use strict";
-$('.carousel .vertical .item').each(function(){
-    var next = $(this).next();
-    if (!next.length) {
-      next = $(this).siblings(':first');
-    }
-    next.children(':first-child').clone().appendTo($(this));
-    
-    for (var i=1;i<2;i++) {
-      next=next.next();
-      if (!next.length) {
-          next = $(this).siblings(':first');
-        }
-      
-      next.children(':first-child').clone().appendTo($(this));
-    }
-  });
+$(function() {
+    $("#root li").on("click", function() {
+        $("#videoarea").attr({
+            "src": $(this).attr("movieurl"),
+            "poster": "",
+            "autoplay": "autoplay"
+        })
+    })
+    $("#videoarea").attr({
+        "src": $("#playlist li").eq(0).attr("movieurl"),
+        "poster": $("#playlist li").eq(0).attr("moviesposter")
+    })
+})
 const API_KEY = "AIzaSyB6RQPxv-X6aojxx9IKh0Nc4twyqlMnitI";
 
 let app = {
@@ -37,14 +34,19 @@ let app = {
         return videos.map((video, index) => {
             const titleUrl = video.snippet.title;
             const url = `https://www.youtube.com/embed/${video.id.videoId}`;
-            return `<div class='item'> 
+            return `<li> 
                      <p class="media-object">${titleUrl}</p>
                      <div"> 
                         <iframe class="embed-responsive-item" src=${url}> </iframe>
                      </div>
-                    </div>`;
+                    </li>`;
         });
     },
+
+    getVideo: function (video){
+        const url = `http://www.youtube.com/embed/${video.id.videoId}`;
+        return `<iframe class="embed-responsive-item" src=${url}> </iframe>`;
+  },
 
     youtubeSearch: function (searchTerm) {
         $("#root").empty();
@@ -58,8 +60,9 @@ let app = {
                 searchTerm: searchTerm
             };
             var list = app.getVideoList(app.result.videos);
+            let firstVideo = app.getVideo(app.result.selectedVideo);
             console.log("lis: ", list);
-            $("#mirror").append(list);
+            $("#videoarea").append(firstVideo);
             $("#root").append(list);
         });
     },
