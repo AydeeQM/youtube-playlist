@@ -14,6 +14,11 @@ class Playlist {
     inicio(){
         this.youtubeSearch('laboratoria');
         $('#buscar').click(() => this.youtubeSearch($('#nombreVideo').val()));
+        $('#nombreVideo').keyup((e) => {
+            if(e.which == 13) {
+                this.youtubeSearch($('#nombreVideo').val());
+            }
+      });
     }
     youtubeSearch(searchTerm) {
         console.log(searchTerm);
@@ -37,7 +42,7 @@ class Playlist {
             const imageUrl = video.snippet.thumbnails.default.url;
             const title = video.snippet.title;
             const url = `https://www.youtube.com/embed/${video.id.videoId}`;
-            return `<div class='col-md-12'>
+            return `<div class='col-md-12 lectura'>
                         <div class='col-md-6'><img class="media-object" src=${imageUrl} /></div>
                         <div class='col-md-6'>${title}</div>
                   </div>`;
@@ -47,10 +52,11 @@ class Playlist {
         const title = video.snippet.title;
         const description = video.snippet.description;
         const url = `http://www.youtube.com/embed/${video.id.videoId}`;
-        let print= `<iframe class="embed-responsive-item" src=${url}> </iframe>
-                        <div><p><strong>${title}</strong></p><p>${description}</p></div>`;
-
+        let totalDes = `<div class='firsttitle'><p><strong>${title}</strong></p><p>${description}</p></div>`
+        let print= `<iframe class="embed-responsive-item" src=${url}> </iframe>`;
+        
         $('#video').html(print);
+        $('#frame').html(totalDes);
     }
     seleccionarNuevoVideo (evento) {
         let direccionIMG = evento.target.src;

@@ -1,9 +1,9 @@
 /* *{
     outline: 1px solid red;
-} */
-
+}
+ */
 body {
-    background-image: url(../img/fondo.jpg);
+    background-image: url(../img/portada.jpg);
     font-family: arial;
     color: #FAFAFA;
     text-transform: uppercase;
@@ -221,32 +221,47 @@ body {
       cursor: pointer;
     }
 /* ESTILO AL INPUT BUSCAR */
+header{
+  background-image: url(../img/cinta.jpg);
+  background-size: cover;
+  height: 50vh;
+}
 .form-group {
     margin:0;
-    padding:20px ;
-
-    &:first-child { border-color: transparent; }
+    padding:50px ;
 }
 
 .form-control {
   padding: 0px 10px 0 20px;
   margin-top: 10px;
   color: #333;
-  font-size: 28px;
+  font-size: 20px;
   font-weight: 500;
-    border: 3px solid #555;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    min-height:60px;
-    height: auto;
-    border-radius: 50px 0  0 50px !important;
+  border: 3px solid #555;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  min-height:50px;
+  height: auto;
+  border-radius: 50px 0  0 50px !important;
 }
 .form-control :focus {
-        -webkit-box-shadow: none;
-        box-shadow: none;
-        border-color: transparent;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-color: transparent;
+}
 
-    }
+.input-group {
+  position: relative;
+  display: table;
+  border-collapse: separate;
+  margin-top: 35%;
+}
+
+@media screen and (min-width: 480px) {
+  .input-group {
+    margin-top: 7%;
+  }
+}
 
 #buscar
 { border:0;
@@ -254,18 +269,65 @@ body {
   margin-top: 10px;
   color: #fff;
   background:#888;
-  font-size: 27px;
+  font-size: 20px;
   font-weight: 500;
-    border: 3px solid #555;
-    border-left: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    min-height:60px;
-    height: auto;
-border-radius: 0 50px 50px 0 !important;
+  border: 3px solid #555;
+  border-left: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  min-height:50px;
+  height: auto;
+  border-radius: 0 50px 50px 0 !important;
 }
 
 .media-object {
   display: block;
   width: 100%;
+}
+.firsttitle{
+  margin-top: 40px;
+  padding: 30px 30px;
+  background: rgba(61, 58, 58, 0.5);
+}
+
+#anuncio{
+  margin-top: 17%;
+  margin-bottom: 15%;
+  padding-left: 10%;
+}
+#masvideos{
+  margin: 10% 0;
+}
+
+.lectura{
+  margin-bottom: 20px;
+  background: rgba(61, 58, 58, 0.5);
+  padding: 10px 0;
+  border-radius: 10px;
+}
+
+.bigmom{
+  padding: 40px 40px;
+  background: rgba(3, 40, 41, 0.5);
+  margin-top: 5%;
+  border-radius: 10px;
+}
+
+/* Footer */
+
+footer{
+  background-color: #424558;
+   margin-top: 10px;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   height: 35px;
+   text-align: center;
+   color: #CCC;
+}
+
+footer p {
+   padding: 10.5px;
+   margin: 0px;
+   line-height: 100%;
 }

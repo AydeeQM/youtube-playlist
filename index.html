@@ -16,32 +16,42 @@
 </head>
 
 <body>
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-10 col-xs-offset-1">
+                    <form action="#" method="#" role="search">
+                        <div class="input-group">
+                            <input class="form-control" placeholder="Search . . ." type="text" id="nombreVideo">
+                            <div class="input-group-btn">
+                                <button type="button" id="buscar"><span class="glyphicon btn-glyphicon glyphicon-search img-circle text-default"></span> search</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
     <section>
         <div class="container-fluid">
             <div class="container">
                 <div class="row">
-                    <div class="col-xs-10 col-xs-offset-1">
-                        <form action="#" method="#" role="search">
-                            <div class="input-group">
-                                <input class="form-control" placeholder="Search . . ." type="text" id="nombreVideo">
-                                <div class="input-group-btn">
-                                    <button type="button" id="buscar"><span class="glyphicon btn-glyphicon glyphicon-search img-circle text-default"></span> search</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-8 bigmom">
                         <div class="embed-responsive embed-responsive-16by9" id="video"></div>
+                        <div id="frame"></div>
                     </div>
                     <div class="col-md-4">
+                        <div id="anuncio" class="hidden-xs"><img src="assets/img/giphy.gif" alt="" width="270" height="250"></div>
                         <div id="masvideos"></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    <footer>
+        <p>© 2017<a style="color:#0a93a6; text-decoration:none;" href="#"> Playlist in Youtube</a>, All rights reserved
+            2016-2017.</p>
+    </footer>
     <script src="assets/js/vimeo.js"></script>
 </body>
 
